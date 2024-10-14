@@ -1,28 +1,24 @@
 import { useState } from 'react';
-import SortVisualization from '../components/SortVizualization';
 
-const sortAlgorithms = [
-  'Bubble Sort',
-  'Selection Sort',
-  'Insertion Sort',
-  'Merge Sort',
-  'Quick Sort'
-];
+const sortAlgorithms = ['Bubble Sort', 'Selection Sort', 'Insertion Sort', 'Merge Sort', 'Quick Sort'];
 
 export default function SortPage() {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('Bubble Sort');
 
   return (
-    <div>
+    <div style={{ textAlign: 'center', marginTop: '20px' }}>
       <h1>Sort Algorithms</h1>
-      <select onChange={(e) => setSelectedAlgorithm(e.target.value)}>
+      <select
+        onChange={(e) => setSelectedAlgorithm(e.target.value)}
+        style={{ padding: '10px', margin: '20px' }}
+      >
         {sortAlgorithms.map((algorithm) => (
           <option key={algorithm} value={algorithm}>
             {algorithm}
           </option>
         ))}
       </select>
-      <SortVisualization algorithm={selectedAlgorithm} />
+      <p>{selectedAlgorithm} visualization coming soon!</p>
     </div>
   );
 }

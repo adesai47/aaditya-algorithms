@@ -12,9 +12,12 @@ export default function SearchPage() {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('Linear Search');
 
   return (
-    <div>
+    <div style={{ textAlign: 'center', marginTop: '20px' }}>
       <h1>Search Algorithms</h1>
-      <select onChange={(e) => setSelectedAlgorithm(e.target.value)}>
+      <select
+        onChange={(e) => setSelectedAlgorithm(e.target.value)}
+        style={{ padding: '10px', margin: '20px' }}
+      >
         {searchAlgorithms.map((algorithm) => (
           <option key={algorithm} value={algorithm}>
             {algorithm}
