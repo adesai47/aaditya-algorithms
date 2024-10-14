@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import SearchVisualization from '../components/SearchVisualization';
 
-const searchAlgorithms = ['Linear Search', 'Binary Search', 'DFS', 'BFS'];
+const searchAlgorithms = [
+  'Linear Search',
+  'Binary Search',
+  'DFS (Depth-First Search)',
+  'BFS (Breadth-First Search)'
+];
 
 export default function SearchPage() {
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState<string>('Linear Search');
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState('Linear Search');
 
   return (
     <div>
