@@ -1,10 +1,16 @@
 import { useState } from 'react';
-import SortVisualization from '../components/SortVisualization';
+import SortVisualization from '../components/SortVizualization';
 
-const sortAlgorithms = ['Bubble Sort', 'Selection Sort', 'Insertion Sort', 'Merge Sort', 'Quick Sort'];
+const sortAlgorithms = [
+  'Bubble Sort',
+  'Selection Sort',
+  'Insertion Sort',
+  'Merge Sort',
+  'Quick Sort'
+];
 
 export default function SortPage() {
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState<string>('Bubble Sort');
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState('Bubble Sort');
 
   return (
     <div>
