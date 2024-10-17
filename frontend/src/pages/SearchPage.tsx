@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import SearchVisualization from '../components/SearchVisualization';
+import LinearSearchVisualization from '../components/LinearSearchVisualization';
+import BinarySearchVisualization from '../components/BinarySearchVisualization';
+import DFSVisualization from '../components/DFSVisualization';
+import BFSVisualization from '../components/BFSVisualization';
 
-const searchAlgorithms = [
-  'Linear Search',
-  'Binary Search',
-  'DFS (Depth-First Search)',
-  'BFS (Breadth-First Search)'
-];
+const searchAlgorithms = ['Linear Search', 'Binary Search', 'DFS', 'BFS'];
 
 export default function SearchPage() {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('Linear Search');
@@ -24,7 +22,10 @@ export default function SearchPage() {
           </option>
         ))}
       </select>
-      <SearchVisualization algorithm={selectedAlgorithm} />
+      {selectedAlgorithm === 'Linear Search' && <LinearSearchVisualization />}
+      {selectedAlgorithm === 'Binary Search' && <BinarySearchVisualization />}
+      {selectedAlgorithm === 'DFS' && <DFSVisualization />}
+      {selectedAlgorithm === 'BFS' && <BFSVisualization />}
     </div>
   );
 }
