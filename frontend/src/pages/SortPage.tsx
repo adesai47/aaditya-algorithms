@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BubbleSortVisualization from '../components/BubbleSortVisualization';
 import SelectionSortVisualization from '../components/SelectionSortVisualization';
 import InsertionSortVisualization from '../components/InsertionSortVisualization';
@@ -10,6 +10,18 @@ const sortAlgorithms = ['Bubble Sort', 'Selection Sort', 'Insertion Sort', 'Merg
 
 export default function SortPage() {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('Bubble Sort');
+  const [randomArray, setRandomArray] = useState<number[]>([]);
+
+  // Function to generate a random array
+  const generateRandomArray = () => {
+    const newArray = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100)); // Array of 10 random numbers
+    setRandomArray(newArray);
+  };
+
+  // Call this function whenever a new algorithm is selected or when the page loads
+  useEffect(() => {
+    generateRandomArray();
+  }, [selectedAlgorithm]); // This will trigger on every change of selectedAlgorithm
 
   return (
     <div
@@ -23,7 +35,6 @@ export default function SortPage() {
         fontFamily: 'Arial, sans-serif',
       }}
     >
-      {/* Reused Header */}
       <header
         style={{
           width: '100%',
@@ -73,11 +84,11 @@ export default function SortPage() {
           ))}
         </select>
         <div style={{ marginTop: '30px' }}>
-          {selectedAlgorithm === 'Bubble Sort' && <BubbleSortVisualization />}
-          {selectedAlgorithm === 'Selection Sort' && <SelectionSortVisualization />}
-          {selectedAlgorithm === 'Insertion Sort' && <InsertionSortVisualization />}
-          {selectedAlgorithm === 'Merge Sort' && <MergeSortVisualization />}
-          {selectedAlgorithm === 'Quick Sort' && <QuickSortVisualization />}
+          {selectedAlgorithm === 'Bubble Sort' && <BubbleSortVisualization initialArray={randomArray} />}
+          {selectedAlgorithm === 'Selection Sort' && <SelectionSortVisualization initialArray={randomArray} />}
+          {selectedAlgorithm === 'Insertion Sort' && <InsertionSortVisualization initialArray={randomArray} />}
+          {selectedAlgorithm === 'Merge Sort' && <MergeSortVisualization initialArray={randomArray} />}
+          {selectedAlgorithm === 'Quick Sort' && <QuickSortVisualization initialArray={randomArray} />}
         </div>
       </div>
     </div>
