@@ -29,7 +29,7 @@ const useQuickSortVisualization = (initialArray: number[]) => {
   useEffect(() => {
     let intervalId: NodeJS.Timeout | null = null;
     if (isPlaying && currentStep < steps.length - 1) {
-      intervalId = setInterval(nextStep, speed);
+      intervalId = setInterval(nextStep, 1100 - speed);
     }
     return () => {
       if (intervalId) clearInterval(intervalId);

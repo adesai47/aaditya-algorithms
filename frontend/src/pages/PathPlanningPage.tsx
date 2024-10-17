@@ -1,15 +1,8 @@
-import { useState } from 'react';
-import LinearSearchVisualization from '../components/LinearSearchVisualization';
-import BinarySearchVisualization from '../components/BinarySearchVisualization';
-import DFSVisualization from '../components/DFSVisualization';
-import BFSVisualization from '../components/BFSVisualization';
+import React from 'react';
+import PathPlanningVisualization from '../components/PathPlanningVisualization';
 import { Link } from 'react-router-dom';
 
-const searchAlgorithms = ['Linear Search', 'Binary Search', 'DFS', 'BFS'];
-
-export default function SearchPage() {
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState('Linear Search');
-
+const PathPlanningPage: React.FC = () => {
   return (
     <div
       style={{
@@ -54,30 +47,11 @@ export default function SearchPage() {
       </header>
 
       <div style={{ textAlign: 'center', marginTop: '120px' }}>
-        <h1 style={{ fontSize: '32px', color: '#2c3e50' }}>Search Algorithms</h1>
-        <select
-          onChange={(e) => setSelectedAlgorithm(e.target.value)}
-          style={{
-            padding: '10px 15px',
-            margin: '20px',
-            fontSize: '18px',
-            borderRadius: '5px',
-            border: '1px solid #ccc',
-          }}
-        >
-          {searchAlgorithms.map((algorithm) => (
-            <option key={algorithm} value={algorithm}>
-              {algorithm}
-            </option>
-          ))}
-        </select>
-        <div style={{ marginTop: '30px' }}>
-          {selectedAlgorithm === 'Linear Search' && <LinearSearchVisualization />}
-          {selectedAlgorithm === 'Binary Search' && <BinarySearchVisualization />}
-          {selectedAlgorithm === 'DFS' && <DFSVisualization />}
-          {selectedAlgorithm === 'BFS' && <BFSVisualization />}
-        </div>
+        <h1 style={{ fontSize: '32px', color: '#2c3e50' }}>Path Planning (Dijkstra's Algorithm)</h1>
+        <PathPlanningVisualization />
       </div>
     </div>
   );
-}
+};
+
+export default PathPlanningPage;
