@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 // Dijkstra's algorithm function
 const dijkstra = (graph: { [key: number]: { node: number; weight: number }[] }, start: number) => {
   const distances: { [key: number]: number } = {};
-  const steps: any[] = [];
+  const steps: { currentNode: number; distances: { [key: number]: number }; visited: Set<number> }[] = [];
   const visited = new Set<number>();
   const pq: { node: number; distance: number }[] = [];
 
@@ -59,7 +59,7 @@ const graph = {
 // Visualization component for Dijkstra's Algorithm
 const PathPlanningVisualization: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [steps, setSteps] = useState<any[]>([]);
+  const [steps, setSteps] = useState<{ currentNode: number; distances: { [key: number]: number }; visited: Set<number> }[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [speed, setSpeed] = useState(500);
 
