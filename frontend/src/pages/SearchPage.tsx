@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import LinearSearchVisualization from '../components/LinearSearchVisualization';
 import BinarySearchVisualization from '../components/BinarySearchVisualization';
 import DFSVisualization from '../components/DFSVisualization';
@@ -9,19 +9,6 @@ const searchAlgorithms = ['Linear Search', 'Binary Search', 'DFS', 'BFS'];
 
 export default function SearchPage() {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('Linear Search');
-  const [randomArray, setRandomArray] = useState<number[]>([]);
-  const target = Math.floor(Math.random() * 100); // Random target for search algorithms
-
-  // Function to generate a random array
-  const generateRandomArray = () => {
-    const newArray = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100)); // Generate an array of 10 random numbers between 0 and 99
-    setRandomArray(newArray);
-  };
-
-  // Call this function whenever a new algorithm is selected or when the page loads
-  useEffect(() => {
-    generateRandomArray();
-  }, [selectedAlgorithm]);
 
   return (
     <div
@@ -85,14 +72,10 @@ export default function SearchPage() {
           ))}
         </select>
         <div style={{ marginTop: '30px' }}>
-          {selectedAlgorithm === 'Linear Search' && (
-            <LinearSearchVisualization initialArray={randomArray} target={target} />
-          )}
-          {selectedAlgorithm === 'Binary Search' && (
-            <BinarySearchVisualization initialArray={randomArray} target={target} />
-          )}
-          {selectedAlgorithm === 'DFS' && <DFSVisualization initialArray={randomArray} />}
-          {selectedAlgorithm === 'BFS' && <BFSVisualization initialArray={randomArray} />}
+          {selectedAlgorithm === 'Linear Search' && <LinearSearchVisualization />}
+          {selectedAlgorithm === 'Binary Search' && <BinarySearchVisualization />}
+          {selectedAlgorithm === 'DFS' && <DFSVisualization />}
+          {selectedAlgorithm === 'BFS' && <BFSVisualization />}
         </div>
       </div>
     </div>
